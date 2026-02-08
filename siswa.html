@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <script>
+    // Cek apakah status login ada di session storage
+    if (sessionStorage.getItem("statusLogin") !== "aktif") {
+        alert("Anda belum login! Akses ditolak.");
+        window.location.href = "login.html";
+    }
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Siswa | SMKN 1</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="ds-wrapper">
+    <aside class="ds-sidebar">
+        <h2>SIAKAD</h2>
+        <ul class="ds-menu">
+            <li><a href="#" class="active"><span>Dashboard</span></a></li>
+            <li><a href="#"><span>Profil</span></a></li>
+            <li><a href="#"><span>Nilai</span></a></li>
+            <li><a href="#"><span>Jadwal</span></a></li>
+        </ul>
+        <a href="login.html" class="ds-logout">Keluar</a>
+    </aside>
+
+    <main class="ds-main">
+        <div class="ds-card">
+            <h1>Halo, Siswa!</h1>
+            <p>Selamat datang di panel akademik SMKN 1 Bengkulu Selatan.</p>
+        </div>
+
+        <div class="ds-card">
+            <h3>Biodata Singkat</h3>
+            <div class="ds-info-grid">
+                <div>Nama Lengkap</div><div>:</div><div>Alfadil Ilhamora</div>
+                <div>NISN</div><div>:</div><div>0012345678</div>
+                <div>Kelas</div><div>:</div><div>XII Desain Komunikasi Visual</div>
+                <div>Status</div><div>:</div><div style="color: green; font-weight: bold;">Aktif</div>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

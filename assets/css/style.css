@@ -1,0 +1,533 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(
+    135deg,
+    #081a3a 0%,
+    #0f3c91 35%,
+    #1e90ff 65%,
+    #cfe4ff 100%
+  );
+  color: #222;
+}
+
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 31, 68, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-weight: 600;
+}
+
+.navbar .logo {
+  height: 40px;
+}
+
+.navbar a {
+  color: white;
+  margin-left: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: #1e90ff;
+}
+
+/* tombol login di navbar */
+.nav-login-btn {
+  background: #1e90ff;
+  padding: 8px 18px;
+  border-radius: 25px;
+}
+
+/* ================= HERO ================= */
+.hero {
+  height: 100vh;
+  padding-top: 80px; /* supaya tidak ketutup navbar */
+  background:
+    linear-gradient(120deg, rgba(10,31,68,.7), rgba(30,144,255,.7)),
+    url('../img/sekolah1.jpg') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.hero-content {
+  color: white;
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 28px;
+  background: white;
+  color: #0a1f44;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+}
+
+/* ================= GALLERY ================= */
+.gallery-section {
+  padding: 80px 50px;
+  text-align: center;
+}
+
+.gallery-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #0a1f44;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 3 kolom */
+  gap: 25px;
+}
+
+.card {
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.15);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+/* ================= FOOTER ================= */
+footer {
+  background: #0a1f44;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .navbar {
+    padding: 15px 25px;
+  }
+}
+
+/* ================================================= */
+/* ================= LOGIN PAGE ==================== */
+/* ================================================= */
+
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #0a1f44, #1e90ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  padding: 40px 30px;
+  width: 360px;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  color: white;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-header img {
+  width: 70px;
+  margin-bottom: 10px;
+}
+
+.login-header h2 {
+  font-size: 1.6rem;
+}
+
+.login-header p {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* ===== FLOATING INPUT ===== */
+.input-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 10px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-size: 0.95rem;
+}
+
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+  top: -8px;
+  background: rgba(10,31,68,0.9);
+  padding: 0 6px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+
+/* tombol login FORM (bukan navbar) */
+.btn-login-form {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  color: #0a1f44;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-login-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* footer login */
+.login-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-footer a {
+  color: white;
+  font-size: 0.85rem;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.login-footer a:hover {
+  opacity: 1;
+}
+
+/* ================= CONTACT SECTION ================= */
+.contact-section {
+  padding: 80px 20px;
+  background: #c5c9d4;
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #0a1f44;
+}
+
+.contact-card {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 25px 10px;
+  background: transparent;
+  color: #0a1f44;
+  border-top: 2px solid #1e90ff;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.contact-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.contact-card strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e90ff;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* ================= NEWS SECTION ================= */
+.news-section {
+  padding: 80px 20px;
+  background: #f4f6f9;
+  text-align: center;
+}
+
+.news-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #0a1f44;
+}
+
+.news-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.news-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 18px;
+  text-align: left;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.15);
+}
+
+.news-card h3 {
+  color: #0a1f44;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.news-date {
+  display: block;
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.news-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.news-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: #1e90ff;
+  transition: color 0.3s;
+}
+
+.news-link:hover {
+  color: #0a1f44;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  color: #a9c3f1;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #1e90ff;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.hero-text-wrap {
+  width: 360px;          /* batas area gerak */
+  margin: 15px auto 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-animated {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  position: relative;
+  animation: marquee 8s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ================= DASHBOARD SISWA SECTION (KHUSUS) ================= */
+
+/* Wrapper Utama */
+.ds-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f7fa; /* Warna background netral agar tidak nabrak gradient body */
+}
+
+/* Sidebar */
+.ds-sidebar {
+    width: 260px;
+    background: #0a1f44; /* Warna biru gelap sesuai tema kamu */
+    color: white;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.ds-sidebar h2 {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    color: #1e90ff;
+    text-align: center;
+}
+
+.ds-menu {
+    list-style: none;
+    flex: 1;
+}
+
+.ds-menu li {
+    margin-bottom: 10px;
+}
+
+.ds-menu a {
+    color: #a9c3f1;
+    text-decoration: none;
+    padding: 12px 15px;
+    display: block;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.ds-menu a:hover, .ds-menu a.active {
+    background: rgba(30, 144, 255, 0.2);
+    color: white;
+}
+
+.ds-logout {
+    color: #ff4d4d;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Konten */
+.ds-main {
+    flex: 1;
+    padding: 40px;
+}
+
+.ds-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+    color: #333; /* Supaya teks terbaca jelas di bg putih */
+}
+
+.ds-card h3 {
+    margin-bottom: 20px;
+    color: #0a1f44;
+    border-left: 4px solid #1e90ff;
+    padding-left: 15px;
+}
+
+.ds-info-grid {
+    display: grid;
+    grid-template-columns: 150px 10px auto;
+    gap: 10px;
+    line-height: 2;
+}
+
+/* Responsif Mobile */
+@media (max-width: 768px) {
+    .ds-sidebar { width: 70px; padding: 15px 10px; }
+    .ds-sidebar h2, .ds-menu span { display: none; }
+    .ds-main { padding: 20px; }
+}
