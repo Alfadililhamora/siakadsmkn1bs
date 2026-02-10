@@ -78,3 +78,30 @@ style.innerHTML = `
   }
 `;
 document.head.appendChild(style);
+
+// Fungsi untuk memindahkan tampilan halaman tanpa reload
+function bukaTab(namaTab) {
+    // Sembunyikan semua konten tab
+    const semuaKonten = document.querySelectorAll('.tab-content');
+    semuaKonten.forEach(konten => {
+        konten.style.display = 'none';
+    });
+
+    // Matikan status 'active' di semua menu sidebar
+    const semuaMenu = document.querySelectorAll('.ds-menu a');
+    semuaMenu.forEach(menu => {
+        menu.classList.remove('active');
+    });
+
+    // Tampilkan konten yang dipilih
+    document.getElementById('tab-' + namaTab).style.display = 'block';
+
+    // Aktifkan warna menu yang dipilih
+    document.getElementById('menu-' + namaTab).classList.add('active');
+}
+
+// Fungsi Logout untuk menghapus session
+function logoutKeamanan() {
+    sessionStorage.removeItem("statusLogin");
+    window.location.href = "login.html";
+}

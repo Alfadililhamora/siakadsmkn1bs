@@ -8,10 +8,10 @@
 body {
   background: linear-gradient(
     135deg,
-    #081a3a 0%,
-    #0f3c91 35%,
-    #1e90ff 65%,
-    #cfe4ff 100%
+    #061838 0%,
+    #3d81ff 35%,
+    #003467 65%,
+    #5d91d6 100%
   );
   color: #222;
 }
@@ -65,10 +65,11 @@ body {
 /* ================= HERO ================= */
 .hero {
   height: 100vh;
-  padding-top: 80px; /* supaya tidak ketutup navbar */
-  background:
-    linear-gradient(120deg, rgba(10,31,68,.7), rgba(30,144,255,.7)),
-    url('../img/sekolah1.jpg') center/cover;
+  padding-top: 80px;
+  background: 
+    linear-gradient(120deg, rgba(40, 65, 106, 0.7), rgba(2, 13, 22, 0.7)),
+    /* Tambahkan ../ di depan assets */
+    url('../img/sekolah.jpg') center/cover no-repeat; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -530,4 +531,93 @@ footer {
     .ds-sidebar { width: 70px; padding: 15px 10px; }
     .ds-sidebar h2, .ds-menu span { display: none; }
     .ds-main { padding: 20px; }
+}
+
+/* Styling Tabel di dalam Card Dashboard */
+.tab-content table {
+    width: 100%;
+    margin-top: 15px;
+    color: #333;
+}
+
+.tab-content th {
+    color: #0a1f44;
+    font-weight: 600;
+}
+
+/* Memperhalus transisi saat pindah tab */
+.tab-content {
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Overlay (Latar Belakang Gelap) */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: none; /* Sembunyi awal */
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* Kartu Pop-up */
+.modal-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  animation: popIn 0.3s ease-out;
+}
+
+.modal-icon { font-size: 50px; margin-bottom: 15px; }
+
+.modal-card h3 { color: #d32f2f; margin-bottom: 10px; }
+
+.modal-card p { color: #666; margin-bottom: 20px; }
+
+.modal-btn {
+  background: #0a1f44;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.modal-btn:hover { background: #1e3a8a; }
+
+/* Animasi Muncul */
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Menambahkan efek smooth pada tombol */
+.modal-btn {
+    transition: all 0.3s ease;
+    min-width: 150px;
+}
+
+/* Animasi scale up untuk icon */
+.modal-icon {
+    display: block;
+    animation: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
 }

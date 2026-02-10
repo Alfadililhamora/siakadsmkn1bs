@@ -2,12 +2,12 @@
 <html lang="id">
 <head>
     <script>
-    // Cek apakah status login ada di session storage
-    if (sessionStorage.getItem("statusLogin") !== "aktif") {
-        alert("Anda belum login! Akses ditolak.");
-        window.location.href = "login.html";
-    }
-</script>
+        // Proteksi Halaman: Cek status login
+        if (sessionStorage.getItem("statusLogin") !== "aktif") {
+            alert("Anda belum login! Akses ditolak.");
+            window.location.href = "login.html";
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Siswa | SMKN 1</title>
@@ -19,31 +19,175 @@
     <aside class="ds-sidebar">
         <h2>SIAKAD</h2>
         <ul class="ds-menu">
-            <li><a href="#" class="active"><span>Dashboard</span></a></li>
-            <li><a href="#"><span>Profil</span></a></li>
-            <li><a href="#"><span>Nilai</span></a></li>
-            <li><a href="#"><span>Jadwal</span></a></li>
+            <li><a href="#" id="menu-dashboard" class="active" onclick="bukaTab('dashboard')"><span>Dashboard</span></a></li>
+            <li><a href="#" id="menu-profil" onclick="bukaTab('profil')"><span>Profil</span></a></li>
+            <li><a href="#" id="menu-nilai" onclick="bukaTab('nilai')"><span>Nilai</span></a></li>
+            <li><a href="#" id="menu-jadwal" onclick="bukaTab('jadwal')"><span>Jadwal</span></a></li>
         </ul>
-        <a href="login.html" class="ds-logout">Keluar</a>
+        <a href="#" onclick="logoutKeamanan()" class="ds-logout">Keluar</a>
     </aside>
 
     <main class="ds-main">
-        <div class="ds-card">
-            <h1>Halo, Siswa!</h1>
-            <p>Selamat datang di panel akademik SMKN 1 Bengkulu Selatan.</p>
+        <section id="tab-dashboard" class="tab-content">
+            <div class="ds-card">
+                <h1>Halo, Siswa!</h1>
+                <p>Selamat datang di panel akademik SMKN 1 Bengkulu Selatan.</p>
+            </div>
+            <div class="ds-card">
+                <h3>Biodata Singkat</h3>
+                <div class="ds-info-grid">
+                    <div>Nama Lengkap</div><div>:</div><div>Alfadil Ilhamora</div>
+                    <div>NISN</div><div>:</div><div>0012345678</div>
+                    <div>Status</div><div>:</div><div style="color: green; font-weight: bold;">Aktif</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-profil" class="tab-content" style="display:none;">
+            <div class="ds-card">
+                <h3>Profil Lengkap Siswa</h3>
+                <div class="ds-info-grid">
+                    <div>Tempat Lahir</div><div>:</div><div>Manna, Bengkulu</div>
+                    <div>Alamat</div><div>:</div><div>Jl. A. Yani, Ibul Manna</div>
+                    <div>Jurusan</div><div>:</div><div>Desain Komunikasi Visual</div>
+                </div>
+            </div>
+        </section>
+
+<section id="tab-nilai" class="tab-content" style="display:none;">
+    <div class="ds-card">
+        <h3 style="color: #0a1f44; margin-bottom: 5px;">Transkrip Nilai Akademik</h3>
+        <p style="font-size: 0.85rem; color: #777; margin-bottom: 20px;">Semester Ganjil | Tahun Pelajaran: 2025/2026</p>
+        
+        <div style="overflow-x: auto;"> <table style="width:100%; border-collapse: collapse; background: white;">
+                <thead>
+                    <tr style="background-color: #f1f5f9; color: #334155;">
+                        <th style="padding:15px 12px; text-align:left; border-bottom: 2px solid #e2e8f0;">Mata Pelajaran</th>
+                        <th style="padding:15px 12px; text-align:center; border-bottom: 2px solid #e2e8f0;">KKM</th>
+                        <th style="padding:15px 12px; text-align:center; border-bottom: 2px solid #e2e8f0;">Pengetahuan</th>
+                        <th style="padding:15px 12px; text-align:center; border-bottom: 2px solid #e2e8f0;">Keterampilan</th>
+                        <th style="padding:15px 12px; text-align:center; border-bottom: 2px solid #e2e8f0;">Predikat</th>
+                    </tr>
+                </thead>
+                <tbody style="color: #475569;">
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding:12px;">Dasar Desain Grafis</td>
+                        <td style="padding:12px; text-align:center;">75</td>
+                        <td style="padding:12px; text-align:center;">92</td>
+                        <td style="padding:12px; text-align:center;">95</td>
+                        <td style="padding:12px; text-align:center;"><span style="background:#dcfce7; color:#166534; padding:4px 10px; border-radius:6px; font-weight:bold;">A</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9; background-color: #fafafa;">
+                        <td style="padding:12px;">Desain Publikasi</td>
+                        <td style="padding:12px; text-align:center;">75</td>
+                        <td style="padding:12px; text-align:center;">88</td>
+                        <td style="padding:12px; text-align:center;">90</td>
+                        <td style="padding:12px; text-align:center;"><span style="background:#dcfce7; color:#166534; padding:4px 10px; border-radius:6px; font-weight:bold;">A-</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding:12px;">Fotografi & Videografi</td>
+                        <td style="padding:12px; text-align:center;">75</td>
+                        <td style="padding:12px; text-align:center;">85</td>
+                        <td style="padding:12px; text-align:center;">94</td>
+                        <td style="padding:12px; text-align:center;"><span style="background:#dcfce7; color:#166534; padding:4px 10px; border-radius:6px; font-weight:bold;">A</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9; background-color: #fafafa;">
+                        <td style="padding:12px;">Matematika</td>
+                        <td style="padding:12px; text-align:center;">70</td>
+                        <td style="padding:12px; text-align:center;">85</td>
+                        <td style="padding:12px; text-align:center;">82</td>
+                        <td style="padding:12px; text-align:center;"><span style="background:#fef9c3; color:#854d0e; padding:4px 10px; border-radius:6px; font-weight:bold;">B+</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding:12px;">Bahasa Inggris</td>
+                        <td style="padding:12px; text-align:center;">70</td>
+                        <td style="padding:12px; text-align:center;">80</td>
+                        <td style="padding:12px; text-align:center;">88</td>
+                        <td style="padding:12px; text-align:center;"><span style="background:#fef9c3; color:#854d0e; padding:4px 10px; border-radius:6px; font-weight:bold;">B</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <div class="ds-card">
-            <h3>Biodata Singkat</h3>
-            <div class="ds-info-grid">
-                <div>Nama Lengkap</div><div>:</div><div>Alfadil Ilhamora</div>
-                <div>NISN</div><div>:</div><div>0012345678</div>
-                <div>Kelas</div><div>:</div><div>XII Desain Komunikasi Visual</div>
-                <div>Status</div><div>:</div><div style="color: green; font-weight: bold;">Aktif</div>
+        <div style="margin-top: 25px; padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="color: #64748b; font-size: 0.9rem;">
+                Rata-rata Nilai: <strong style="color: #0f172a; font-size: 1.1rem;">88.5</strong>
+            </div>
+            <div style="color: #64748b; font-size: 0.9rem;">
+                Peringkat: <strong style="color: #0f172a; font-size: 1.1rem;">3 <span style="font-weight: normal;">dari 36 Siswa</span></strong>
             </div>
         </div>
+    </div>
+</section>
+
+<section id="tab-jadwal" class="tab-content" style="display:none;">
+    <div class="ds-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 style="color: #0a1f44; margin: 0;">Jadwal Pelajaran XII DKV</h3>
+            <span style="background: #e0f2fe; color: #0369a1; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Semester Genap</span>
+        </div>
+        
+        <div style="overflow-x: auto;">
+            <table style="width:100%; border-collapse: collapse; background: white;">
+                <thead>
+                    <tr style="background-color: #f8fafc; color: #475569;">
+                        <th style="padding: 15px; text-align: left; border-bottom: 2px solid #e2e8f0; width: 100px;">Hari</th>
+                        <th style="padding: 15px; text-align: left; border-bottom: 2px solid #e2e8f0; width: 120px;">Jam</th>
+                        <th style="padding: 15px; text-align: left; border-bottom: 2px solid #e2e8f0;">Mata Pelajaran</th>
+                        <th style="padding: 15px; text-align: left; border-bottom: 2px solid #e2e8f0;">Guru</th>
+                    </tr>
+                </thead>
+                <tbody style="color: #1e293b;">
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 15px; font-weight: bold; color: #2563eb;">Senin</td>
+                        <td style="padding: 15px;">07:30 - 12:00</td>
+                        <td style="padding: 15px;">Produk Kreatif & Kewirausahaan</td>
+                        <td style="padding: 15px; color: #64748b;">Bpk. Ridwan, S.T.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9; background-color: #fcfcfc;">
+                        <td style="padding: 15px; font-weight: bold; color: #2563eb;">Selasa</td>
+                        <td style="padding: 15px;">07:30 - 10:30</td>
+                        <td style="padding: 15px;">Desain Publikasi</td>
+                        <td style="padding: 15px; color: #64748b;">Ibu Sari, M.Sn.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9; background-color: #fcfcfc;">
+                        <td></td>
+                        <td style="padding: 15px;">10:45 - 12:15</td>
+                        <td style="padding: 15px;">Bahasa Inggris</td>
+                        <td style="padding: 15px; color: #64748b;">Ibu Diana, M.Pd.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 15px; font-weight: bold; color: #2563eb;">Rabu</td>
+                        <td style="padding: 15px;">07:30 - 11:00</td>
+                        <td style="padding: 15px;">Fotografi & Videografi</td>
+                        <td style="padding: 15px; color: #64748b;">Bpk. Andi, S.Kom.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9; background-color: #fcfcfc;">
+                        <td style="padding: 15px; font-weight: bold; color: #2563eb;">Kamis</td>
+                        <td style="padding: 15px;">07:30 - 09:30</td>
+                        <td style="padding: 15px;">Matematika</td>
+                        <td style="padding: 15px; color: #64748b;">Ibu Erna, S.Pd.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9; background-color: #fcfcfc;">
+                        <td></td>
+                        <td style="padding: 15px;">09:45 - 12:00</td>
+                        <td style="padding: 15px;">Animasi 2D & 3D</td>
+                        <td style="padding: 15px; color: #64748b;">Bpk. Surya, S.Sn.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 15px; font-weight: bold; color: #2563eb;">Jumat</td>
+                        <td style="padding: 15px;">07:30 - 09:00</td>
+                        <td style="padding: 15px;">Pendidikan Agama</td>
+                        <td style="padding: 15px; color: #64748b;">Bpk. Ahmad, S.Ag.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
     </main>
 </div>
 
+<script src="assets/js/script.js"></script>
 </body>
 </html>
